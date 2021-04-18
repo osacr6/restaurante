@@ -1,0 +1,10 @@
+def introduccion():
+  print('***** Bienvenido al Sistema Restaurante *****')
+  print()
+  print('1) Promociones')
+  print('2) Desayunos')
+  print('3) Almuersos')
+  print('4) Cena')
+  print('5) Antojitos')
+  print()
+  return str(input( "Ingrese una opcion: " ))
