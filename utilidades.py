@@ -4,6 +4,7 @@ import time
 def limpiar(segundos = 0):
   time.sleep(segundos)
   os.system('cls')
+  os.system('clear')
 
 def optenerNombre():
   print('***** Bienvenido a nuestro Sistema Restaurantes *****')
@@ -33,7 +34,7 @@ def primeraPregunta(esAdmin, nombre):
     if intro == '':
       return primeraPregunta(esAdmin, nombre)
     else:
-      return print( 'Buscando ....', intro)
+      return print('Buscando ....', intro)
   else:
       intro = int(intro)
   # opcion invalida

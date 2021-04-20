@@ -12,8 +12,8 @@ menus = []
 esAdmin = False
 nombreUsuario = 'Consumidor';
 dirname = os.path.dirname(__file__)
-archivoRestaurantes = os.path.join(dirname, 'datos\\restaurantes')
-folderMenus = os.path.join(dirname, 'datos\\menus')
+archivoRestaurantes = os.path.join(dirname, 'datos/restaurantes')
+folderMenus = os.path.join(dirname, 'datos/menus')
 
 # mode admin
 for arg in sys.argv:
@@ -26,17 +26,17 @@ for arg in sys.argv:
 restautantes = lector(archivoRestaurantes)
 
 # hacer copia de archivo restaurantes
-# escritor(archivoRestaurantes+'2', restautantes)
+#escritor(archivoRestaurantes+'2', restautantes)
 
 # limpiar consola windows
-limpiar(1)
+#limpiar(1)
 
 # optener datos de restaurantes
 print('Datos del archivo' , archivoRestaurantes)
 menus = optenerMenus(restautantes, folderMenus)
 
 # limpiar consola windows
-limpiar(1)
+limpiar(0)
 
 # iniciar programa
 if esAdmin:
@@ -48,10 +48,3 @@ else:
 opcion_1 = primeraPregunta(esAdmin, nombreUsuario)
 print(opcion_1)
 # buscar opcion 1
-
-
-
-
-
-
-
