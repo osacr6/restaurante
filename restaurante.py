@@ -23,7 +23,8 @@ for arg in sys.argv:
     esAdmin = True
 
 # leer archivo restaurantes
-restautantes = lector(archivoRestaurantes)
+restaurantes = lector(archivoRestaurantes)
+#menus = obtenerMenus(restaurantes, folderMenus)
 
 # hacer copia de archivo restaurantes
 #escritor(archivoRestaurantes+'2', restautantes)
@@ -33,10 +34,11 @@ restautantes = lector(archivoRestaurantes)
 
 # optener datos de restaurantes
 print('Datos del archivo' , archivoRestaurantes)
-menus = optenerMenus(restautantes, folderMenus)
+menus = obtenerMenus(restaurantes, folderMenus)
 
 # limpiar consola windows
 limpiar(0)
+
 
 # iniciar programa
 if esAdmin:

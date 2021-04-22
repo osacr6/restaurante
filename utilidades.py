@@ -1,6 +1,7 @@
 import os
 import time
 import platform
+from def_restaurantes import *
 
 def limpiar(segundos = 0):
     #SE UTILIZA platform PARA VALIDAR EL S.O DEL USUARIO
@@ -41,6 +42,8 @@ def primeraPregunta(esAdmin, nombre):
         if intro == '':
             return primeraPregunta(esAdmin, nombre)
         else:
+            #opciones = buscarCategoria(intro)
+            #print(opciones)
             return print('Buscando ....', intro)
     else:
         intro = int(intro)
@@ -72,6 +75,8 @@ def primeraPregunta(esAdmin, nombre):
             return 'admin'
 #        admin = menuAdmin(intro)
 #        print(admin)
+        else:
+            return primeraPregunta(esAdmin, nombre)
     else:
         return primeraPregunta(esAdmin, nombre)
 
