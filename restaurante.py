@@ -42,7 +42,7 @@ limpiar(0)
 if esAdmin:
   nombreUsuario = 'admin'
 else:
-  nombreUsuario = optenerNombre()
+  nombreUsuario = obtenerNombre()
 
 # ejecutar primera pregunta
 opcion_1 = primeraPregunta(esAdmin, nombreUsuario)
