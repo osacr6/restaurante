@@ -40,13 +40,6 @@ def primeraPregunta(esAdmin, nombre):
   # opcion invalida
   if intro == 0 or intro > 6:
     return primeraPregunta(esAdmin, nombre)
-  # es admin
-  if intro == 6:
-    if esAdmin:
-      print( '*Confiracion para el Administrador*' )
-      return 'admin'
-    else:
-      return primeraPregunta(esAdmin, nombre)
 
   if intro == 1:
     return 'Promociones'
@@ -58,3 +51,11 @@ def primeraPregunta(esAdmin, nombre):
     return 'Cena'
   if intro == 5:
     return 'Antojitos'
+
+  # es admin
+  if intro == 6:
+    if esAdmin:
+      print( '*Confiracion para el Administrador*' )
+      return 'admin'
+    else:
+      return primeraPregunta(esAdmin, nombre)
