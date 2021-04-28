@@ -18,7 +18,7 @@ def limpiar(segundos = 0):
         os.system('clear')
 
 
-def uptenerSeleccion(entrada):
+def obtenerSeleccion(entrada):
     # opcion no es un numero
     if not entrada.isnumeric():
         if entrada == '':
@@ -57,7 +57,7 @@ def listarRestaurantes(restautantes):
         if i > 0:
             print('{0}) {1}'.format(i, restautantes[i][0]))
     print()
-    return uptenerSeleccion(str(input( "Ingrese el Restaurante a modificar: " )))
+    return obtenerSeleccion(str(input( "Ingrese el Restaurante a modificar: " )))
 
 
 def opcionesAdmin(restautantes, index):
@@ -68,7 +68,7 @@ def opcionesAdmin(restautantes, index):
         print('{0}) Editar {1}'.format(col+1, restautantes[0][col]))
     print('{0}) Eliminar {1}'.format(len(restautantes[0])+1, restautantes[index][0]))
     print()
-    opcion = uptenerSeleccion(str(input( "Ingrese una opcion: " )))
+    opcion = obtenerSeleccion(str(input( "Ingrese una opcion: " )))
     if opcion == len(restautantes[0])+1:
         del restautantes[index]
         return restautantes
@@ -104,6 +104,6 @@ def like():
     print(".......•.¸.•´")
     print("....¸.•´")
     print("... (")
-    print("☻/")
-    print("/▌♥♥")
-    print("/ \ ♥♥")
+    print("  ☻/")
+    print(" /▌♥♥")
+    print(" / \ ♥♥")

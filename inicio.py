@@ -9,7 +9,7 @@ from menus import *
 # constantes
 restaurantes = []
 menus = []
-caritoDecompras = []
+carritoDecompras = []
 esAdmin = False
 nombreUsuario = 'Consumidor';
 dirname = os.path.dirname(__file__)
@@ -38,13 +38,13 @@ else:
 
 def primeraPregunta(esAdmin, nombre):
     global restaurantes
-    global caritoDecompras
-    # limpiar consola windows
+    global carritoDecompras
+    # limpiar consola
     limpiar()
-    listarCarrito(caritoDecompras)
+    listarCarrito(carritoDecompras)
     # preguntar
     intro = introduccion(esAdmin, nombre)
-    numero = uptenerSeleccion(intro)
+    numero = obtenerSeleccion(intro)
 
     #VALIDACIÓN DE OPCIONES
     if numero == 1:
@@ -58,19 +58,24 @@ def primeraPregunta(esAdmin, nombre):
     elif numero == 5:
         menuAntojitos(intro, esAdmin, nombre)
     elif numero == 6:
-        limpiar()
-        print("****", nombre, "Gracias por utilizar nuestra APP ****")
-        listarCarrito(caritoDecompras)
-        now = datetime.now()
-        timestamp = str(datetime.timestamp(now))
-        escritor(folderOrdenes+"/orden-"+timestamp, caritoDecompras)
-        print('Orden #{0} Ingresada ....'.format(timestamp))
-        like()
-        caritoDecompras = []
-        input("")
-        return primeraPregunta(esAdmin, nombre)
+        if len(carritoDecompras) == 0:
+            print("El carrito de compras se encuentra vacío")
+            limpiar(3)
+            return primeraPregunta(esAdmin, nombre)
+        else:
+            limpiar()
+            print("****", nombre, "Gracias por utilizar nuestra APP ****")
+            listarCarrito(carritoDecompras)
+            now = datetime.now()
+            timestamp = str(datetime.timestamp(now))
+            escritor(folderOrdenes+"/orden-"+timestamp, carritoDecompras)
+            print('Orden #{0} Ingresada ....'.format(timestamp))
+            like()
+            carritoDecompras = []
+            input("")
+            return primeraPregunta(esAdmin, nombre)
     elif numero == 7:
-        if len(caritoDecompras) == 0:
+        if len(carritoDecompras) == 0:
             print("****", nombre, "Gracias por utilizar nuestra APP ****")
             return 0
         else:
@@ -93,7 +98,7 @@ def primeraPregunta(esAdmin, nombre):
 
 
 def menuPromos(intro, esAdmin, nombre):
-    global caritoDecompras
+    global carritoDecompras
     limpiar()
     palabra = "descuento"
     productos = listarProductos(menus, palabra)
@@ -105,19 +110,19 @@ def menuPromos(intro, esAdmin, nombre):
     print("0) Volver al menú principal")
     print()
     pregunta = str(input("Digite su opción: "))
-    numero = uptenerSeleccion(pregunta)
+    numero = obtenerSeleccion(pregunta)
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
     if numero > 0 and numero <= 10 and len(productos) > numero-1:
-        caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
+        carritoDecompras = generarPedido(productos[numero-1], carritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
         return menuPromos(intro, esAdmin, nombre)
 
 
 def menuDesayunos(intro, esAdmin, nombre):
-    global caritoDecompras
+    global carritoDecompras
     limpiar()
     palabra = "desayuno"
     productos = listarProductos(menus, palabra)
@@ -129,19 +134,19 @@ def menuDesayunos(intro, esAdmin, nombre):
     print("0) Volver al menú principal")
     print()
     pregunta = str(input("Digite su opción: "))
-    numero = uptenerSeleccion(pregunta)
+    numero = obtenerSeleccion(pregunta)
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
     if numero > 0 and numero <= 10 and len(productos) > numero-1:
-        caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
+        carritoDecompras = generarPedido(productos[numero-1], carritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
-        return menuPromos(intro, esAdmin, nombre)
+        return menuDesayunos(intro, esAdmin, nombre)
 
 
 def menuAlmuerzos(intro, esAdmin, nombre):
-    global caritoDecompras
+    global carritoDecompras
     limpiar()
     palabra = "almuerzo"
     productos = listarProductos(menus, palabra)
@@ -153,19 +158,19 @@ def menuAlmuerzos(intro, esAdmin, nombre):
     print("0) Volver al menú principal")
     print()
     pregunta = str(input("Digite su opción: "))
-    numero = uptenerSeleccion(pregunta)
+    numero = obtenerSeleccion(pregunta)
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
     if numero > 0 and numero <= 10 and len(productos) > numero-1:
-        caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
+        carritoDecompras = generarPedido(productos[numero-1], carritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
-        return menuPromos(intro, esAdmin, nombre)
+        return menuAlmuerzos(intro, esAdmin, nombre)
 
 
 def menuCenas(intro, esAdmin, nombre):
-    global caritoDecompras
+    global carritoDecompras
     limpiar()
     palabra = "cena"
     productos = listarProductos(menus, palabra)
@@ -177,19 +182,19 @@ def menuCenas(intro, esAdmin, nombre):
     print("0) Volver al menú principal")
     print()
     pregunta = str(input("Digite su opción: "))
-    numero = uptenerSeleccion(pregunta)
+    numero = obtenerSeleccion(pregunta)
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
     if numero > 0 and numero <= 10 and len(productos) > numero-1:
-        caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
+        carritoDecompras = generarPedido(productos[numero-1], carritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
-        return menuPromos(intro, esAdmin, nombre)
+        return menuCenas(intro, esAdmin, nombre)
 
 
 def menuAntojitos(intro, esAdmin, nombre):
-    global caritoDecompras
+    global carritoDecompras
     limpiar()
     palabra = "antojo"
     productos = listarProductos(menus, palabra)
@@ -201,15 +206,15 @@ def menuAntojitos(intro, esAdmin, nombre):
     print("0) Volver al menú principal")
     print()
     pregunta = str(input("Digite su opción: "))
-    numero = uptenerSeleccion(pregunta)
+    numero = obtenerSeleccion(pregunta)
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
     if numero > 0 and numero <= 10 and len(productos) > numero-1:
-        caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
+        carritoDecompras = generarPedido(productos[numero-1], carritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
-        return menuPromos(intro, esAdmin, nombre)
+        return menuAntojitos(intro, esAdmin, nombre)
 
 
 # ejecutar primera pregunta
