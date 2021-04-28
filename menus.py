@@ -12,10 +12,11 @@ def eliminaReceta(restautante, menus):
   print('EliminaReceta ...')
   return menus;
 
-def listarPromos(menus):
+def listarProductos(menus, palabra):
     lista = []
     for receta in menus:
         for col  in receta:
-            if col == 'descuento':
+            if col == palabra:
+            #if col == 'descuento':
                 lista.append(receta)
     return lista
