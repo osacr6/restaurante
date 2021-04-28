@@ -75,10 +75,7 @@ def opcionesAdmin(restautantes, index):
         return restautantes
 
 def generarPedido(orden, lista):
-    lista.append(orden)
-    print("Pedido Agregado a la Orden:")
-    for x in lista:
-        print('{0} de {1} ...... ₡{2}'.format(x[1], x[0], x[4]))
+    lista.append([orden[0], orden[1], orden[4]])
     return lista
 
 def listarCarrito(lista=[]):
@@ -88,8 +85,8 @@ def listarCarrito(lista=[]):
     else:
         print("***** Orden de Compra Actual *****")
         for x in lista:
-            print('{0} de {1} ...... ₡{2}'.format(x[1], x[0], x[4]))
-            precio = float(x[4])
+            print('{0} de {1} ...... ₡{2}'.format(x[1], x[0], x[2]))
+            precio = float(x[2])
             total = total+precio
         print('Total Acumulado: ₡{0}'.format(total))
         print()
