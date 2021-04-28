@@ -24,7 +24,7 @@ def uptenerSeleccion(entrada):
         if entrada == '':
             return 0
         else:
-            return 'Buscar'
+            return 0
     else:
         return int(entrada)
 
@@ -41,12 +41,39 @@ def introduccion(esAdmin, nombre):
     print('3) Almuerzos')
     print('4) Cena')
     print('5) Antojitos')
-    print('6) Pagar orden')
+    print('6) Finalizar orden')
     print('7) Salir del sistema')
     if esAdmin:
         print('8) Configuracion')
     print()
     return str(input( "Ingrese una opcion: " ))
+
+def listarRestaurantes(restautantes):
+    print('***** Administracion de Restaurante *****')
+    for i in range(len(restautantes)):
+        if i > 0:
+            print('{0}) {1}'.format(i, restautantes[i][0]))
+    print()
+    return uptenerSeleccion(str(input( "Ingrese el Restaurante a modificar: " )))
+
+def opcionesAdmin(restautantes, index):
+    print('***** Administracion de Restaurante *****')
+    print('{0}'.format(restautantes[index][0]))
+    print("----")
+    for col in range(len(restautantes[0])):
+        print('{0}) Editar {1}'.format(col+1, restautantes[0][col]))
+    print('{0}) Eliminar {1}'.format(len(restautantes[0])+1, restautantes[index][0]))
+    print()
+    opcion = uptenerSeleccion(str(input( "Ingrese una opcion: " )))
+    if opcion == len(restautantes[0])+1:
+        del restautantes[index]
+        return restautantes
+    else:
+        print('{0}: {1}'.format(restautantes[0][opcion-1], restautantes[index][opcion-1]))
+        nuevoDato = str(input( "Ingrese Nuevo dato: " ))
+        restautantes[index][opcion-1] = nuevoDato
+        print('{0} {1}: {2}'.format(restautantes[index][0], restautantes[0][opcion-1], restautantes[index][opcion-1]))
+        return restautantes
 
 def generarPedido(orden, lista):
     lista.append(orden)

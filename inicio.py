@@ -6,7 +6,7 @@ from utilidades import *
 from menus import *
 
 # constantes
-restautantes = []
+restaurantes = []
 menus = []
 caritoDecompras = []
 esAdmin = False
@@ -24,13 +24,10 @@ for arg in sys.argv:
 
 # leer archivo restaurantes
 restaurantes = lector(archivoRestaurantes)
-#menus = obtenerMenus(restaurantes, folderMenus)
 
 # hacer copia de archivo restaurantes
 #escritor(archivoRestaurantes+'2', restautantes)
 
-# limpiar consola windows
-#limpiar(1)
 
 # optener datos de restaurantes
 print('Datos del archivo' , archivoRestaurantes)
@@ -47,6 +44,7 @@ else:
 
 
 def primeraPregunta(esAdmin, nombre):
+    global restaurantes
     # limpiar consola windows
     limpiar()
     listarCarrito(caritoDecompras)
@@ -54,7 +52,7 @@ def primeraPregunta(esAdmin, nombre):
     intro = introduccion(esAdmin, nombre)
     numero = uptenerSeleccion(intro)
 
-#VALIDACIÓN DE OPCIONES
+    #VALIDACIÓN DE OPCIONES
     if numero == 1:
         menuPromos(intro, esAdmin, nombre)
     elif numero == 2:
@@ -77,10 +75,13 @@ def primeraPregunta(esAdmin, nombre):
             return primeraPregunta(esAdmin, nombre)
     elif numero == 8:
         if esAdmin:
-            print("Configuración para el Administrador")
-            return 'admin'
-        #admin = menuAdmin(intro)
-        #print(admin)
+            limpiar()
+            r = listarRestaurantes(restaurantes)
+            if r and numero > 0:
+                limpiar()
+                restaurantes = opcionesAdmin(restaurantes, r)
+                escritor(archivoRestaurantes, restaurantes)
+                return primeraPregunta(esAdmin, nombre)
         else:
             return primeraPregunta(esAdmin, nombre)
     else:
