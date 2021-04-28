@@ -51,6 +51,7 @@ def primeraPregunta(esAdmin, nombre):
 #VALIDACIÓN DE OPCIONES
     if intro == 1:
         print("Promociones")
+        menuPromos(intro, esAdmin, nombre)
 #        buscar = buscarProducto(intro)
 #        print(buscar)
     elif intro == 2:
@@ -79,6 +80,23 @@ def primeraPregunta(esAdmin, nombre):
             return primeraPregunta(esAdmin, nombre)
     else:
         return primeraPregunta(esAdmin, nombre)
+
+def menuPromos(intro, esAdmin, nombre):
+    limpiar()
+    print("***", nombre, "estas son nuestras promos actuales ***")
+#   buscar = buscarProducto(intro)
+    print("Deseas realizar un pedido?")
+    print("1) Sí, quiero pedir")
+    print("2) No, volver al menú principal")
+    pregunta = input("Digite su opcion: ")
+    if pregunta == 1:
+        print("***Generar Pedido***")
+        #generarPedido()
+    elif pregunta == 2:
+        return primeraPregunta(esAdmin, nombre)
+    else:
+        return menuPromos(intro, esAdmin, nombre)
+
 
 
 
