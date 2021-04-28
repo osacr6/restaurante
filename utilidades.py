@@ -6,7 +6,6 @@ from archivos import lector, escritor
 from restaurantes import *
 from menus import *
 
-total = float(0)
 
 def limpiar(segundos = 0):
     #SE UTILIZA platform PARA VALIDAR EL S.O DEL USUARIO
@@ -83,14 +82,23 @@ def generarPedido(orden, lista):
     return lista
 
 def listarCarrito(lista=[]):
-    global total
+    total = float(0)
     if len(lista) == 0:
         return
     else:
         print("***** Orden de Compra Actual *****")
         for x in lista:
             print('{0} de {1} ...... ₡{2}'.format(x[1], x[0], x[4]))
-            #precio = float(x[4])
-            #total = total+precio
-        print("Total Acumulado: ", total)
+            precio = float(x[4])
+            total = total+precio
+        print('Total Acumulado: ₡{0}'.format(total))
         print()
+
+def like():
+    print("..... (¯`v´¯)♥")
+    print(".......•.¸.•´")
+    print("....¸.•´")
+    print("... (")
+    print("☻/")
+    print("/▌♥♥")
+    print("/ \ ♥♥")

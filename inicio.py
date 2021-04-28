@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+from datetime import datetime
 from archivos import lector, escritor
 from utilidades import *
 from menus import *
@@ -14,27 +15,18 @@ nombreUsuario = 'Consumidor';
 dirname = os.path.dirname(__file__)
 archivoRestaurantes = os.path.join(dirname, 'datos/restaurantes')
 folderMenus = os.path.join(dirname, 'datos/menus')
+folderOrdenes = os.path.join(dirname, 'datos/ordenes')
 
 # mode admin
 for arg in sys.argv:
   if str(arg) == 'admin':
-    print('Iniciando modo Administrador ...')
-    print()
     esAdmin = True
 
 # leer archivo restaurantes
 restaurantes = lector(archivoRestaurantes)
 
-# hacer copia de archivo restaurantes
-#escritor(archivoRestaurantes+'2', restautantes)
-
-
 # optener datos de restaurantes
-print('Datos del archivo' , archivoRestaurantes)
 menus = obtenerMenus(restaurantes, folderMenus)
-
-# limpiar consola windows
-limpiar(0)
 
 # iniciar programa
 if esAdmin:
@@ -45,6 +37,7 @@ else:
 
 def primeraPregunta(esAdmin, nombre):
     global restaurantes
+    global caritoDecompras
     # limpiar consola windows
     limpiar()
     listarCarrito(caritoDecompras)
@@ -64,7 +57,17 @@ def primeraPregunta(esAdmin, nombre):
     elif numero == 5:
         menuAntojitos(intro, esAdmin, nombre)
     elif numero == 6:
-        print("Pagar")
+        limpiar()
+        print("****", nombre, "Gracias por utilizar nuestra APP ****")
+        listarCarrito(caritoDecompras)
+        now = datetime.now()
+        timestamp = str(datetime.timestamp(now))
+        escritor(folderOrdenes+"/orden-"+timestamp, caritoDecompras)
+        print('Orden #{0} Ingresada ....'.format(timestamp))
+        like()
+        caritoDecompras = []
+        input("")
+        return primeraPregunta(esAdmin, nombre)
     elif numero == 7:
         if len(caritoDecompras) == 0:
             print("****", nombre, "Gracias por utilizar nuestra APP ****")
@@ -205,4 +208,3 @@ def menuAntojitos(intro, esAdmin, nombre):
 # ejecutar primera pregunta
 opcion_1 = primeraPregunta(esAdmin, nombreUsuario)
 print(opcion_1)
-# buscar opcion 1
