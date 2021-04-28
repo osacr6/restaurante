@@ -29,6 +29,7 @@ restaurantes = lector(archivoRestaurantes)
 menus = obtenerMenus(restaurantes, folderMenus)
 
 # iniciar programa
+limpiar()
 if esAdmin:
   nombreUsuario = 'admin'
 else:
@@ -108,7 +109,7 @@ def menuPromos(intro, esAdmin, nombre):
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
-    if numero > 0 and numero <= 10:
+    if numero > 0 and numero <= 10 and len(productos) > numero-1:
         caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
@@ -132,7 +133,7 @@ def menuDesayunos(intro, esAdmin, nombre):
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
-    if numero > 0 and numero <= 10:
+    if numero > 0 and numero <= 10 and len(productos) > numero-1:
         caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
@@ -156,7 +157,7 @@ def menuAlmuerzos(intro, esAdmin, nombre):
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
-    if numero > 0 and numero <= 10:
+    if numero > 0 and numero <= 10 and len(productos) > numero-1:
         caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
@@ -180,7 +181,7 @@ def menuCenas(intro, esAdmin, nombre):
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
-    if numero > 0 and numero <= 10:
+    if numero > 0 and numero <= 10 and len(productos) > numero-1:
         caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
@@ -204,7 +205,7 @@ def menuAntojitos(intro, esAdmin, nombre):
     print(numero)
     if numero == 0:
         return primeraPregunta(esAdmin, nombre)
-    if numero > 0 and numero <= 10:
+    if numero > 0 and numero <= 10 and len(productos) > numero-1:
         caritoDecompras = generarPedido(productos[numero-1], caritoDecompras)
         return primeraPregunta(esAdmin, nombre)
     else:
