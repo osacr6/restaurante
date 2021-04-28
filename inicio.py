@@ -90,6 +90,7 @@ def primeraPregunta(esAdmin, nombre):
     else:
         return primeraPregunta(esAdmin, nombre)
 
+
 def menuPromos(intro, esAdmin, nombre):
     global caritoDecompras
     limpiar()
@@ -112,6 +113,7 @@ def menuPromos(intro, esAdmin, nombre):
         return primeraPregunta(esAdmin, nombre)
     else:
         return menuPromos(intro, esAdmin, nombre)
+
 
 def menuDesayunos(intro, esAdmin, nombre):
     global caritoDecompras
@@ -136,6 +138,7 @@ def menuDesayunos(intro, esAdmin, nombre):
     else:
         return menuPromos(intro, esAdmin, nombre)
 
+
 def menuAlmuerzos(intro, esAdmin, nombre):
     global caritoDecompras
     limpiar()
@@ -158,6 +161,7 @@ def menuAlmuerzos(intro, esAdmin, nombre):
         return primeraPregunta(esAdmin, nombre)
     else:
         return menuPromos(intro, esAdmin, nombre)
+
 
 def menuCenas(intro, esAdmin, nombre):
     global caritoDecompras
@@ -182,6 +186,7 @@ def menuCenas(intro, esAdmin, nombre):
     else:
         return menuPromos(intro, esAdmin, nombre)
 
+
 def menuAntojitos(intro, esAdmin, nombre):
     global caritoDecompras
     limpiar()
@@ -204,6 +209,7 @@ def menuAntojitos(intro, esAdmin, nombre):
         return primeraPregunta(esAdmin, nombre)
     else:
         return menuPromos(intro, esAdmin, nombre)
+
 
 # ejecutar primera pregunta
 opcion_1 = primeraPregunta(esAdmin, nombreUsuario)

@@ -14,6 +14,3 @@ def obtenerMenus(restaurantes, folderMenus):
           receta = menu[j]
           menus.append(receta)
   return menus
-
-#def buscarCategoria(intro):
-    #return menus[:,intro]

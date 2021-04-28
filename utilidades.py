@@ -17,6 +17,7 @@ def limpiar(segundos = 0):
     elif sistema == "Darwin":
         os.system('clear')
 
+
 def uptenerSeleccion(entrada):
     # opcion no es un numero
     if not entrada.isnumeric():
@@ -27,10 +28,12 @@ def uptenerSeleccion(entrada):
     else:
         return int(entrada)
 
+
 def obtenerNombre():
     print('***** Bienvenido a nuestro Sistema Restaurantes *****')
     print()
     return str(input( "Ingrese su nombre: " ))
+
 
 def introduccion(esAdmin, nombre):
     print('*****', nombre, 'Bienvenido al Sistema Restaurante *****')
@@ -47,6 +50,7 @@ def introduccion(esAdmin, nombre):
     print()
     return str(input( "Ingrese una opcion: " ))
 
+
 def listarRestaurantes(restautantes):
     print('***** Administracion de Restaurante *****')
     for i in range(len(restautantes)):
@@ -54,6 +58,7 @@ def listarRestaurantes(restautantes):
             print('{0}) {1}'.format(i, restautantes[i][0]))
     print()
     return uptenerSeleccion(str(input( "Ingrese el Restaurante a modificar: " )))
+
 
 def opcionesAdmin(restautantes, index):
     print('***** Administracion de Restaurante *****')
@@ -74,9 +79,11 @@ def opcionesAdmin(restautantes, index):
         print('{0} {1}: {2}'.format(restautantes[index][0], restautantes[0][opcion-1], restautantes[index][opcion-1]))
         return restautantes
 
+
 def generarPedido(orden, lista):
     lista.append([orden[0], orden[1], orden[4]])
     return lista
+
 
 def listarCarrito(lista=[]):
     total = float(0)
@@ -90,6 +97,7 @@ def listarCarrito(lista=[]):
             total = total+precio
         print('Total Acumulado: ₡{0}'.format(total))
         print()
+
 
 def like():
     print("..... (¯`v´¯)♥")
