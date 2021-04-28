@@ -1,8 +1,6 @@
 import os
 from archivos import lector, escritor
 
-menus = []
-
 def agregaRestautantes(menus):
   print('agregarMenu ...')
   return menus;
@@ -16,7 +14,7 @@ def eliminaRestautantes(menus):
   return menus;
 
 def obtenerMenus(restaurantes, folderMenus):
-  #menus = []
+  menus = []
   for i in range(len(restaurantes)):
     fila = restaurantes[i]
     print(i, fila)

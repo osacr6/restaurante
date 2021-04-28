@@ -1,7 +1,10 @@
 import os
+import sys
 import time
 import platform
-from def_restaurantes import *
+from archivos import lector, escritor
+from restaurantes import *
+from menus import *
 
 def limpiar(segundos = 0):
     #SE UTILIZA platform PARA VALIDAR EL S.O DEL USUARIO
@@ -12,6 +15,16 @@ def limpiar(segundos = 0):
         os.system('cls')
     elif sistema == "Darwin":
         os.system('clear')
+
+def uptenerSeleccion(entrada):
+    # opcion no es un numero
+    if not entrada.isnumeric():
+        if entrada == '':
+            return 0
+        else:
+            return 'Buscar'
+    else:
+        return int(entrada)
 
 def obtenerNombre():
     print('***** Bienvenido a nuestro Sistema Restaurantes *****')
@@ -31,97 +44,18 @@ def introduccion(esAdmin, nombre):
     print()
     return str(input( "Ingrese una opcion: " ))
 
-def primeraPregunta(esAdmin, nombre):
+def generarPedido(orden, lista):
+    lista.append(orden)
+    print("Pedido Agregado a la orden:")
+    for x in lista:
+        print('{0} de {1} ...... ₡{2}'.format(x[1], x[0], x[4]))
+    return lista
 
-    # limpiar consola windows
-    limpiar()
-    # preguntar
-    intro = introduccion(esAdmin, nombre)
-    # opcion no es un numero
-    if not intro.isnumeric():
-        if intro == '':
-            return primeraPregunta(esAdmin, nombre)
-        else:
-            #opciones = buscarCategoria(intro)
-            #print(opciones)
-            return print('Buscando ....', intro)
+def listarCarrito(lista=[]):
+    if len(lista) == 0:
+        return
     else:
-        intro = int(intro)
-
-#VALIDACIÓN DE OPCIONES
-    if intro == 1:
-        print("Promociones")
-        menuPromos(intro, esAdmin, nombre)
-#        buscar = buscarProducto(intro)
-#        print(buscar)
-    elif intro == 2:
-        print("Desayunos")
-#        buscar = buscarProducto(intro)
-#        print(buscar)
-    elif intro == 3:
-        print("Almuerzos")
-#        buscar = buscarProducto(intro)
-#        print(buscar)
-    elif intro == 4:
-        print("Cena")
-#        buscar = buscarProducto(intro)
-#        print(buscar)
-    elif intro == 5:
-        print("Antojitos")
-#        buscar = buscarProducto(intro)
-#        print(buscar)
-    elif intro == 6:
-        if esAdmin:
-            print("Configuracion para el Administrador")
-            return 'admin'
-#        admin = menuAdmin(intro)
-#        print(admin)
-        else:
-            return primeraPregunta(esAdmin, nombre)
-    else:
-        return primeraPregunta(esAdmin, nombre)
-
-def menuPromos(intro, esAdmin, nombre):
-    limpiar()
-    print("***", nombre, "estas son nuestras promos actuales ***")
-#   buscar = buscarProducto(intro)
-    print("Deseas realizar un pedido?")
-    print("1) Sí, quiero pedir")
-    print("2) No, volver al menú principal")
-    pregunta = input("Digite su opcion: ")
-    if pregunta == 1:
-        print("***Generar Pedido***")
-        #generarPedido()
-    elif pregunta == 2:
-        return primeraPregunta(esAdmin, nombre)
-    else:
-        return menuPromos(intro, esAdmin, nombre)
-
-
-
-
-#*********Codigo Anterior*********
-    # opcion invalida
-#    if intro == 0 or intro > 6:
-#        return primeraPregunta(esAdmin, nombre)
-
-
-#if intro == 1:
-#    return 'Promociones'
-#if intro == 2:
-#    return 'Desayunos'
-#if intro == 3:
-#    return 'Almuersos'
-#if intro == 4:
-#    return 'Cena'
-#if intro == 5:
-#    return 'Antojitos'''
-
-  # es admin
-#    if intro == 6:
-#        if esAdmin:
-#            print( '*Confiracion para el Administrador*' )
-#            return 'admin'
-#        else:
-#            return primeraPregunta(esAdmin, nombre)
-#*********Codigo Anterior*********
+        print("***** Orden de Compara *****")
+        for x in lista:
+            print('{0} de {1} ...... ₡{2}'.format(x[1], x[0], x[4]))
+        print()
