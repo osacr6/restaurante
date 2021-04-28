@@ -1,18 +1,6 @@
 import os
 from archivos import lector, escritor
 
-def agregaRestautantes(menus):
-  print('agregarMenu ...')
-  return menus;
-
-def editaRestautantes(menus):
-  print('editarMenu ...')
-  return menus;
-
-def eliminaRestautantes(menus):
-  print('EliminarMenu ...')
-  return menus;
-
 def obtenerMenus(restaurantes, folderMenus):
   menus = []
   for i in range(len(restaurantes)):
